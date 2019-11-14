@@ -1,9 +1,10 @@
-const express = require('express');
+const express = require('express')
+const accountRouter = require('./accounts/account-router.js')
+const server = express()
 
-const db = require('./data/dbConfig.js');
+server.use(express.json())
+server.use('/accounts', accountRouter)
 
-const server = express();
+server.get('/', (req, res) => res.send(`<h2>Database 1 Challenge</h2>`))
 
-server.use(express.json());
-
-module.exports = server;
+module.exports = server
